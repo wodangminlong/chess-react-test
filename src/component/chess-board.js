@@ -57,21 +57,18 @@ export default class ChessBoard extends React.Component {
             context.stroke()
         }
         // 添加文字 楚
-        context.font = '40px 宋体'
+        context.font = '40px KaiTi'
         context.translate(0, 530)
         context.rotate(-90 * Math.PI/180)
-        const gradient = context.createLinearGradient(0,0, c.offsetWidth, 0)
-        gradient.addColorStop(1, 'red')
-        context.strokeStyle = gradient
-        context.strokeText('楚', 245, 130)
+        context.fillText('楚', 245, 130)
         // 添加文字 河
-        context.strokeText('河', 245, 180)
+        context.fillText('河', 245, 180)
         // 添加文字 漢
         context.translate(480, 530)
         context.rotate(-180 * Math.PI/180)
-        context.strokeText('漢', 195, 180)
+        context.fillText('漢', 195, 180)
         // 添加文字 界
-        context.strokeText('界', 195, 230)
+        context.fillText('界', 195, 230)
         // 九宫士线1
         context.lineWidth = '0.1'
         context.strokeStyle = '#000000'
@@ -100,6 +97,8 @@ export default class ChessBoard extends React.Component {
         context.moveTo(-10, 340)
         context.lineTo(90, 240)
         context.stroke()
+        // 添加 ∟
+
     }
 
     render() {

@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
         <ChessBoard />
+        <button>开始</button>
     </div>
   );
 }
