@@ -6,8 +6,10 @@ import ChessPieces from "./component/chess-pieces";
 function App() {
   return (
     <div className="App">
-        <ChessBoard />
-        <ChessPieces />
+        <div className="div-chess">
+            <ChessBoard />
+            <ChessPieces />
+        </div>
     </div>
   );
 }
