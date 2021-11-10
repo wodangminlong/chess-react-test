@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: wheat;
+  background-color: #61dafb;
 }
 
 .App-logo {
@@ -36,4 +36,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#canvas-chess-board {
+  background-color: wheat;
+  margin: 100px
 }

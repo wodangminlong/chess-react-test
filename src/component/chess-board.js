@@ -8,13 +8,13 @@ export default class ChessBoard extends React.Component {
     }
 
     componentDidMount() {
-        this.draw()
+        this.drawChessBoard()
     }
 
-    draw() {
-        const c = document.getElementById('canvas-chess-board')
+    drawChessBoard() {
+        const canvasChessBoard = document.getElementById('canvas-chess-board')
         // 外边框
-        let context = c.getContext('2d')
+        let context = canvasChessBoard.getContext('2d')
         context.lineWidth = '1'
         context.strokeStyle = '#CCCCCC'
         context.strokeRect(0,0,480,530)
@@ -22,10 +22,17 @@ export default class ChessBoard extends React.Component {
         context.lineWidth = '3'
         context.strokeStyle = '#000000'
         context.strokeRect(35,35,410,460)
+        let redTickMarkArray = ['一','二','三','四','五','六','七','八','九']
+        let blackTickMarkArray = ['1','2','3','4','5','6','7','8','9']
         // 内边框2
         context.lineWidth = '2'
         context.strokeStyle = '#000000'
         context.strokeRect(40,40,400,450)
+        context.font = '30px KaiTi'
+        context.fillText(redTickMarkArray[0], 425, 530)
+        context.fillText(redTickMarkArray[redTickMarkArray.length-1], 25, 530)
+        context.fillText(blackTickMarkArray[0], 30, 30)
+        context.fillText(blackTickMarkArray[blackTickMarkArray.length-1], 430, 30)
         // 横线
         for (let i = 0; i < 8; i++) {
             context.lineWidth = '0.1'
@@ -36,6 +43,7 @@ export default class ChessBoard extends React.Component {
             context.lineTo(440,y)
             context.stroke()
         }
+
         // 竖线1
         for (let i = 0; i < 7; i++) {
             context.lineWidth = '0.1'
@@ -45,7 +53,9 @@ export default class ChessBoard extends React.Component {
             context.moveTo(x, 40)
             context.lineTo(x, 240)
             context.stroke()
+            context.fillText(blackTickMarkArray[i+1], 80 + 50 * i, 30)
         }
+
         // 竖线2
         for (let i = 0; i < 7; i++) {
             context.lineWidth = '0.1'
@@ -55,6 +65,7 @@ export default class ChessBoard extends React.Component {
             context.moveTo(x, 290)
             context.lineTo(x, 490)
             context.stroke()
+            context.fillText(redTickMarkArray[i+1], 375 - 50 * i, 530)
         }
         // 添加文字 楚
         context.font = '40px KaiTi'
@@ -98,7 +109,73 @@ export default class ChessBoard extends React.Component {
         context.lineTo(90, 240)
         context.stroke()
         // 添加 ∟
+        context.font = '15px KaiTi'
+        context.translate(340, 140)
+        context.fillText('∟', 0, -2)
+        context.fillText('∟', 0, 298)
+        context.fillText('∟', -250, -2)
+        context.fillText('∟', -250, 298)
 
+        context.fillText('∟', -50, 48)
+        context.fillText('∟', -50, 148)
+        context.fillText('∟', -50, 248)
+        context.fillText('∟', -50, 348)
+
+        context.fillText('∟', -200, 48)
+        context.fillText('∟', -200, 148)
+        context.fillText('∟', -200, 248)
+        context.fillText('∟', -200, 348)
+
+
+        context.rotate(-90 * Math.PI/180)
+        context.fillText('∟', 0, -2)
+        context.fillText('∟', -300, -2)
+        context.fillText('∟', 0, -252)
+        context.fillText('∟', -300, -252)
+
+        context.fillText('∟', -50, -52)
+        context.fillText('∟', -150, -52)
+        context.fillText('∟', -250, -52)
+        context.fillText('∟', -350, -52)
+
+        context.fillText('∟', -50, -202)
+        context.fillText('∟', -150, -202)
+        context.fillText('∟', -250, -202)
+        context.fillText('∟', -350, -202)
+
+
+        context.rotate(-90 * Math.PI/180)
+        context.fillText('∟', 0, -2)
+        context.fillText('∟', 0, -302)
+        context.fillText('∟', 250, -2)
+        context.fillText('∟', 250, -302)
+
+        context.fillText('∟', 50, 48)
+        context.fillText('∟', 50, -52)
+        context.fillText('∟', 50, -152)
+        context.fillText('∟', 50, -252)
+
+        context.fillText('∟', 200, 48)
+        context.fillText('∟', 200, -52)
+        context.fillText('∟', 200, -152)
+        context.fillText('∟', 200, -252)
+
+
+        context.rotate(-90 * Math.PI/180)
+        context.fillText('∟', 0, -2)
+        context.fillText('∟', 300, -2)
+        context.fillText('∟', 0, 248)
+        context.fillText('∟', 300, 248)
+
+        context.fillText('∟', -50, 48)
+        context.fillText('∟', 50, 48)
+        context.fillText('∟', 150, 48)
+        context.fillText('∟', 250, 48)
+
+        context.fillText('∟', -50, 198)
+        context.fillText('∟', 50, 198)
+        context.fillText('∟', 150, 198)
+        context.fillText('∟', 250, 198)
     }
 
     render() {
