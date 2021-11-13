@@ -43,8 +43,8 @@ service.interceptors.response.use(
      */
     response => {
         const res = response.data
-        // if the custom code is not 20000, it is judged as an error.
-        if (res.code !== 1) {
+        // if the custom code is not 0, it is judged as an error.
+        if (res.code !== 0) {
             return Promise.reject(res.msg || 'Error')
         } else {
             return res
