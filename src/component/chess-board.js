@@ -1,4 +1,5 @@
 import React from "react";
+import ChessPieces from "./chess-pieces";
 
 export default class ChessBoard extends React.Component {
 
@@ -180,9 +181,12 @@ export default class ChessBoard extends React.Component {
 
     render() {
         return(
-            <canvas id="canvas-chess-board" width="480" height="530">
+            <div id="div-chess">
+                <canvas id="canvas-chess-board" width="480" height="530">
 
-            </canvas>
+                </canvas>
+                <ChessPieces type="dd" />
+            </div>
         )
     }
 }

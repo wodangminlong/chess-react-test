@@ -1,5 +1,6 @@
 import React from "react";
 import * as Game from "./game";
+import ReactDOM from "react-dom";
 
 export default class ChessPieces extends React.Component {
 
@@ -9,6 +10,9 @@ export default class ChessPieces extends React.Component {
     }
 
     componentDidMount() {
+        console.info(this.props.type)
+        const node = ReactDOM.findDOMNode(this)
+        console.info(node)
         Game.startNewGame()
             .then(res => {
                 console.info(res)
