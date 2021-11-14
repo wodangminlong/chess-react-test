@@ -1,5 +1,5 @@
 import React from "react";
-import * as Game from "./game";
+
 import ReactDOM from "react-dom";
 
 export default class ChessPieces extends React.Component {
@@ -10,21 +10,14 @@ export default class ChessPieces extends React.Component {
     }
 
     componentDidMount() {
-        console.info(this.props.type)
+        console.info(this.props.id)
         const node = ReactDOM.findDOMNode(this)
         console.info(node)
-        Game.startNewGame()
-            .then(res => {
-                console.info(res)
-            })
-            .catch(error => {
-                console.info(error)
-            })
     }
 
     render() {
         return(
-            <div className="div-chess-pieces" />
+            <div id={this.props.id} className="div-chess-pieces" />
         )
     }
 

@@ -46,13 +46,12 @@
   height: 530px;
 }
 
-.div-chess-pieces{
+.div-chess-pieces {
   background: url("../src/image/BA.GIF");
   background-size: 100% 100%;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-
   position: absolute;
   left: 170px;
   top: 20px;

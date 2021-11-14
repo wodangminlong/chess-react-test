@@ -1,4 +1,5 @@
 import React from "react";
+import * as Game from "./game";
 import ChessPieces from "./chess-pieces";
 
 export default class ChessBoard extends React.Component {
@@ -10,6 +11,7 @@ export default class ChessBoard extends React.Component {
 
     componentDidMount() {
         this.drawChessBoard()
+        this.drawNewChessPieces()
     }
 
     drawChessBoard() {
@@ -179,13 +181,24 @@ export default class ChessBoard extends React.Component {
         context.fillText('∟', 250, 198)
     }
 
+    drawNewChessPieces() {
+        Game.startNewGame()
+            .then(res => {
+                console.info(res)
+            })
+            .catch(error => {
+                console.info(error)
+            })
+    }
+
     render() {
         return(
             <div id="div-chess">
                 <canvas id="canvas-chess-board" width="480" height="530">
 
                 </canvas>
-                <ChessPieces type="dd" />
+                <ChessPieces id="dd" />
+                <ChessPieces id="ee" />
             </div>
         )
     }
