@@ -197,8 +197,8 @@ export default class ChessBoard extends React.Component {
                 <canvas id="canvas-chess-board" width="480" height="530">
 
                 </canvas>
-                <ChessPieces id="dd" />
-                <ChessPieces id="ee" />
+                <ChessPieces id="1" left="170" top="20" />
+                <ChessPieces id="2" left="130" top="20" />
             </div>
         )
     }

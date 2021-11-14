@@ -11,13 +11,14 @@ export default class ChessPieces extends React.Component {
 
     componentDidMount() {
         console.info(this.props.id)
-        const node = ReactDOM.findDOMNode(this)
+        let node = ReactDOM.findDOMNode(this)
         console.info(node)
+        node.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
     }
 
     render() {
         return(
-            <div id={this.props.id} className="div-chess-pieces" />
+            <div id={'chess-pieces'+this.props.id} className="div-chess-pieces" />
         )
     }
 
