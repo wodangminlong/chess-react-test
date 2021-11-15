@@ -7,6 +7,15 @@ export default class ChessBoard extends React.Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
+        let positionArray = []
+        for (let i = 0; i < 10; i++) {
+            let startY = 470 - 50 * i
+            for (let j = 0; j < 9; j++) {
+                let startX = 420 - 50 * j
+                positionArray.push({x: startX, y: startY})
+            }
+        }
+        this.state = {chessPiecesArray: [], positionArray: positionArray}
     }
 
     componentDidMount() {
@@ -184,12 +193,8 @@ export default class ChessBoard extends React.Component {
     drawNewChessPieces() {
         Game.startNewGame()
             .then(res => {
-                let divChess = document.getElementById('div-chess')
-                res.data.forEach((item, index) => {
-                    console.info(index * 50)
-                    let chessPieces = '<ChessPieces id="'+item+'" left="10" top="10" />'
-                    divChess.append(chessPieces)
-                })
+                this.setState({chessPiecesArray: res.data})
+                console.info(this.state.chessPiecesArray)
             })
             .catch(error => {
                 console.info(error)
@@ -197,13 +202,16 @@ export default class ChessBoard extends React.Component {
     }
 
     render() {
+        const {chessPiecesArray} = this.state
+        const {positionArray} = this.state
         return(
             <div id="div-chess">
                 <canvas id="canvas-chess-board" width="480" height="530">
 
                 </canvas>
-                <ChessPieces id="1" left="170" top="20" />
-                <ChessPieces id="2" left="130" top="20" />
+                {chessPiecesArray.map((item,index)=>{
+                    return <ChessPieces id={item} left={positionArray[index].x} top={positionArray[index].y} key={index} />
+                })}
             </div>
         )
     }

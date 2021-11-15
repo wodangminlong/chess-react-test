@@ -10,9 +10,7 @@ export default class ChessPieces extends React.Component {
     }
 
     componentDidMount() {
-        console.info(this.props.id)
         let node = ReactDOM.findDOMNode(this)
-        console.info(node)
         node.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
     }
 
