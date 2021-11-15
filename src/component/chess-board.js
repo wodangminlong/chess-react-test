@@ -184,7 +184,12 @@ export default class ChessBoard extends React.Component {
     drawNewChessPieces() {
         Game.startNewGame()
             .then(res => {
-                console.info(res)
+                let divChess = document.getElementById('div-chess')
+                res.data.forEach((item, index) => {
+                    console.info(index * 50)
+                    let chessPieces = '<ChessPieces id="'+item+'" left="10" top="10" />'
+                    divChess.append(chessPieces)
+                })
             })
             .catch(error => {
                 console.info(error)
