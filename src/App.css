@@ -47,12 +47,10 @@
 }
 
 .div-chess-pieces {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   position: absolute;
-  /*left: 170px;*/
-  /*top: 20px;*/
 }
 
 #chess-pieces1 {
@@ -64,58 +62,122 @@
   background-size: 100% 100%;
 }
 #chess-pieces3 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RB.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces4 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RA.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces5 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RK.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces6 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RA.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces7 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RB.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces8 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RN.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces9 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RR.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces10 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RC.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces11 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RC.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces12 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RP.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces13 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RP.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces14 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RP.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces15 {
-  background: url("../src/image/BA.GIF");
+  background: url("../src/image/RP.GIF");
   background-size: 100% 100%;
 }
 #chess-pieces16 {
+  background: url("../src/image/RP.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces17 {
+  background: url("../src/image/BR.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces18 {
+  background: url("../src/image/BN.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces19 {
+  background: url("../src/image/BB.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces20 {
   background: url("../src/image/BA.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces21 {
+  background: url("../src/image/BK.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces22 {
+  background: url("../src/image/BA.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces23 {
+  background: url("../src/image/BB.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces24 {
+  background: url("../src/image/BN.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces25 {
+  background: url("../src/image/BR.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces26 {
+  background: url("../src/image/BC.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces27 {
+  background: url("../src/image/BC.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces28 {
+  background: url("../src/image/BP.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces29 {
+  background: url("../src/image/BP.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces30 {
+  background: url("../src/image/BP.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces31 {
+  background: url("../src/image/BP.GIF");
+  background-size: 100% 100%;
+}
+#chess-pieces32 {
+  background: url("../src/image/BP.GIF");
   background-size: 100% 100%;
 }

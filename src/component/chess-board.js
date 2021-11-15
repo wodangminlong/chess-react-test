@@ -9,9 +9,9 @@ export default class ChessBoard extends React.Component {
         super(props);
         let positionArray = []
         for (let i = 0; i < 10; i++) {
-            let startY = 470 - 50 * i
+            let startY = 465 - 50 * i
             for (let j = 0; j < 9; j++) {
-                let startX = 420 - 50 * j
+                let startX = 415 - 50 * j
                 positionArray.push({x: startX, y: startY})
             }
         }
@@ -194,7 +194,6 @@ export default class ChessBoard extends React.Component {
         Game.startNewGame()
             .then(res => {
                 this.setState({chessPiecesArray: res.data})
-                console.info(this.state.chessPiecesArray)
             })
             .catch(error => {
                 console.info(error)
