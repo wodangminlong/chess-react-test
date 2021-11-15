@@ -14,9 +14,13 @@ export default class ChessPieces extends React.Component {
         node.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
     }
 
+    select() {
+        console.info('click')
+    }
+
     render() {
         return(
-            <div id={'chess-pieces'+this.props.id} className="div-chess-pieces" />
+            <div id={'chess-pieces'+this.props.id} className="div-chess-pieces" onClick={this.select} />
         )
     }
 
