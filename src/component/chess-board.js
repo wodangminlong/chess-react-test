@@ -209,7 +209,10 @@ export default class ChessBoard extends React.Component {
 
                 </canvas>
                 {chessPiecesArray.map((item,index)=>{
-                    return <ChessPieces id={item} left={positionArray[index].x} top={positionArray[index].y} key={index} />
+                    return <ChessPieces id={item}
+                                        left={positionArray[index].x}
+                                        top={positionArray[index].y}
+                                        key={index} />
                 })}
             </div>
         )
