@@ -15,8 +15,11 @@ export default class ChessPieces extends React.Component {
     }
 
     select(e) {
-        console.info('click')
-        console.info(e.target.id)
+        if (e.target.id.indexOf('null') > -1) {
+            console.info('click null')
+        } else {
+            console.info(e.target.id)
+        }
     }
 
     render() {
