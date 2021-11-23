@@ -16,10 +16,12 @@ export default class ChessPieces extends React.Component {
 
     select(e) {
         if (e.target.id.indexOf('null') > -1) {
-            console.info('click null')
+            console.info('null')
         } else {
             console.info(e.target.id)
         }
+        let divChessPiecesArray = document.getElementsByClassName('div-chess-pieces')
+        console.info(divChessPiecesArray)
     }
 
     render() {

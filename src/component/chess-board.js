@@ -191,7 +191,7 @@ export default class ChessBoard extends React.Component {
     }
 
     drawNewChessPieces() {
-        Game.startNewGame()
+        Game.initPiecesPosition()
             .then(res => {
                 this.setState({chessPiecesArray: res.data})
             })
