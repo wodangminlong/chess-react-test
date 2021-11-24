@@ -53,6 +53,11 @@
   position: absolute;
 }
 
+.chess-pieces-selected {
+  background: url("../src/image/OOS.GIF");
+  background-size: 100% 100%;
+}
+
 #chess-pieces1 {
   background: url("../src/image/RR.GIF");
   background-size: 100% 100%;

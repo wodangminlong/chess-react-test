@@ -15,10 +15,18 @@ export default class ChessPieces extends React.Component {
     }
 
     select(e) {
+        const chessPiecesSelectedClassName = 'chess-pieces-selected'
         if (e.target.id.indexOf('null') > -1) {
             console.info('null')
         } else {
             console.info(e.target.id)
+            if (e.target.className.indexOf(chessPiecesSelectedClassName) > -1) {
+                // 取消选中
+                e.target.classList.remove(chessPiecesSelectedClassName)
+            } else {
+                // 选中
+                e.target.classList.add(chessPiecesSelectedClassName)
+            }
         }
         let divChessPiecesArray = document.getElementsByClassName('div-chess-pieces')
         console.info(divChessPiecesArray)
