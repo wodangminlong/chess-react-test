@@ -11,8 +11,7 @@ export default class ChessPieces extends React.Component {
     }
 
     componentDidMount() {
-        let node = ReactDOM.findDOMNode(this)
-        node.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
+        this.move(this)
     }
 
     select = (e) => {
@@ -20,6 +19,13 @@ export default class ChessPieces extends React.Component {
         const chessPiecesSelectedClassName = 'chess-pieces-selected'
         if (e.currentTarget.id.indexOf('null') > -1) {
             console.info('null')
+            let divChessPiecesSelected = document.getElementsByClassName(chessPiecesSelectedClassName)
+            if (divChessPiecesSelected.length === 1) {
+                console.info('ready to move')
+                // 判断当前位置是否可以落子,可以落子时调用move方法
+
+                _this.move(divChessPiecesSelected[0])
+            }
         } else {
             console.info(e.target.id)
             if (e.currentTarget.className.indexOf(chessPiecesSelectedClassName) > -1) {
@@ -38,6 +44,11 @@ export default class ChessPieces extends React.Component {
         }
         let divChessPiecesArray = document.getElementsByClassName('div-chess-pieces')
         console.info(divChessPiecesArray)
+    }
+
+    move(node) {
+        let n = ReactDOM.findDOMNode(node)
+        n.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
     }
 
     render() {
