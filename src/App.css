@@ -53,9 +53,41 @@
   position: absolute;
 }
 
-.chess-pieces-selected {
+.div-chess-pieces-unselect {
+  display: none;
+}
+
+.div-chess-pieces-select {
+  width: 50px;
+  height: 50px;
+  position: absolute;
   background: url("../src/image/OOS.GIF");
   background-size: 100% 100%;
+  display: block;
+}
+
+.div-chess-pieces-path {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border: 1px dashed #FFFFFF;
+  border-radius: 50%;
+  top: 14px;
+  left: 14px;
+  display: none;
+}
+
+.div-chess-pieces-path-round {
+  width: 10px;
+  height: 10px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.div-chess-pieces-path-down {
+  display: block;
 }
 
 #chess-pieces1 {

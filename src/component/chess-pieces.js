@@ -7,6 +7,7 @@ export default class ChessPieces extends React.Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
+        this.state = { selected: false, down: false }
     }
 
     componentDidMount() {
@@ -14,18 +15,25 @@ export default class ChessPieces extends React.Component {
         node.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
     }
 
-    select(e) {
+    select = (e) => {
+        let _this = this
         const chessPiecesSelectedClassName = 'chess-pieces-selected'
-        if (e.target.id.indexOf('null') > -1) {
+        if (e.currentTarget.id.indexOf('null') > -1) {
             console.info('null')
         } else {
             console.info(e.target.id)
-            if (e.target.className.indexOf(chessPiecesSelectedClassName) > -1) {
+            if (e.currentTarget.className.indexOf(chessPiecesSelectedClassName) > -1) {
                 // 取消选中
-                e.target.classList.remove(chessPiecesSelectedClassName)
+                e.currentTarget.classList.remove(chessPiecesSelectedClassName)
+                _this.setState({
+                    selected: false
+                })
             } else {
                 // 选中
-                e.target.classList.add(chessPiecesSelectedClassName)
+                e.currentTarget.classList.add(chessPiecesSelectedClassName)
+                _this.setState({
+                    selected: true
+                })
             }
         }
         let divChessPiecesArray = document.getElementsByClassName('div-chess-pieces')
@@ -34,7 +42,12 @@ export default class ChessPieces extends React.Component {
 
     render() {
         return(
-            <div id={'chess-pieces'+this.props.id} className="div-chess-pieces" onClick={this.select} />
+            <div id={'chess-pieces'+this.props.id} className="div-chess-pieces" onClick={this.select} >
+                <div className={this.state.selected ? 'div-chess-pieces-select' : 'div-chess-pieces-unselect'} />
+                <div className={this.state.down ? 'div-chess-pieces-path-down' : 'div-chess-pieces-path'}>
+                    <div className="div-chess-pieces-path-round" />
+                </div>
+            </div>
         )
     }
 
