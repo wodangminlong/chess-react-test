@@ -2,6 +2,7 @@
 import React from "react";
 import axios from 'axios';
 import querystring from 'querystring';
+import Base64 from 'base-64'
 
 // create an axios instance
 let service = axios.create({
@@ -42,7 +43,8 @@ service.interceptors.response.use(
      * You can also judge the status by HTTP Status Code
      */
     response => {
-        const res = response.data
+        const res = Base64.decode(response.data)
+        console.info(res)
         // if the custom code is not 0, it is judged as an error.
         if (res.code !== 0) {
             return Promise.reject(res.msg || 'Error')
