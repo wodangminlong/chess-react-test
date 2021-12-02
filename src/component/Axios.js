@@ -43,8 +43,7 @@ service.interceptors.response.use(
      * You can also judge the status by HTTP Status Code
      */
     response => {
-        const res = Base64.decode(response.data)
-        console.info(res)
+        const res = JSON.parse(Base64.decode(response.data))
         // if the custom code is not 0, it is judged as an error.
         if (res.code !== 0) {
             return Promise.reject(res.msg || 'Error')
