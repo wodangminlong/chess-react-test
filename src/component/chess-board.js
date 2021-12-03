@@ -1,6 +1,6 @@
 import React from "react";
 import * as Game from "./game";
-// import ChessPieces from "./chess-pieces";
+import ChessPieces from "./chess-pieces";
 
 export default class ChessBoard extends React.Component {
 
@@ -19,8 +19,9 @@ export default class ChessBoard extends React.Component {
     }
 
     componentDidMount() {
-        this.drawChessBoard()
-        this.drawNewChessPieces()
+        let _this = this
+        _this.drawChessBoard()
+        _this.drawNewChessPieces()
     }
 
     drawChessBoard() {
@@ -208,18 +209,14 @@ export default class ChessBoard extends React.Component {
                 <canvas id="canvas-chess-board" width="480" height="530">
 
                 </canvas>
-                {/*{chessPiecesArray.map((item,index)=>{*/}
-                {/*    return <ChessPieces id={item}*/}
-                {/*                        left={positionArray[index].x}*/}
-                {/*                        top={positionArray[index].y}*/}
-                {/*                        key={index} />*/}
-                {/*})}*/}
                 {chessPiecesArray.map((item,index)=>{
-                    return <div id={item} className="div-chess-pieces"
-                                style={'left:' + positionArray[index].x + 'px;top:' + positionArray[index].y +'px;'}
-                                        left={positionArray[index].x}
-                                        top={positionArray[index].y}
-                                        key={index} />
+                    return <div id={index} className="div-chess-pieces"
+                                style={{left: positionArray[index].x + 'px', top: + positionArray[index].y +'px'}}
+                                key={index} >
+
+                                <ChessPieces id={item} />
+
+                           </div>
                 })}
             </div>
         )

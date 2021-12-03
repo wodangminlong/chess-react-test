@@ -12,21 +12,22 @@ export default class ChessPieces extends React.Component {
 
     componentDidMount() {
         let n = ReactDOM.findDOMNode(this)
-        n.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
+        n.style = 'left: '+this.props.left
     }
 
     select = (e) => {
         let _this = this
         const chessPiecesSelectedClassName = 'chess-pieces-selected'
         if (e.currentTarget.id.indexOf('null') > -1) {
-            console.info('null')
             let divChessPiecesSelected = document.getElementsByClassName(chessPiecesSelectedClassName)
             if (divChessPiecesSelected.length === 1) {
-                console.info('ready to move')
+                let oldNode = _this.selectNode(divChessPiecesSelected[0])
+                let oldParentId = oldNode.parentElement.id
+                let newNode = e.currentTarget
+                newNode.parentElement.appendChild(oldNode)
+                newNode.remove()
+                _this.createOldNode(oldParentId)
                 // 判断当前位置是否可以落子,可以落子时调用move方法
-                e.currentTarget.id = divChessPiecesSelected[0].id
-                divChessPiecesSelected[0].id = null
-                _this.move(this)
             }
         } else {
             console.info(e.target.id)
@@ -44,18 +45,27 @@ export default class ChessPieces extends React.Component {
                 })
             }
         }
-        let divChessPiecesArray = document.getElementsByClassName('div-chess-pieces')
-        console.info(divChessPiecesArray)
     }
 
-    move(node) {
-        let n = ReactDOM.findDOMNode(node)
-        n.style = 'left: '+this.props.left+'px;top: '+this.props.top+'px;'
+    selectNode(node) {
+        return ReactDOM.findDOMNode(node)
+    }
+
+    createOldNode(oldParentId) {
+        console.info(111)
+        console.info(oldParentId)
+        console.info(111)
+        let chessPiecesPathRoundDiv = React.createElement('div', {className: 'div-chess-pieces-path-round'})
+        let chessPiecesPathDownDiv = React.createElement('div', {className: 'div-chess-pieces-path-down'}, chessPiecesPathRoundDiv)
+        let chessPiecesUnselectDiv = React.createElement('div', {className: 'div-chess-pieces-unselect'})
+        let chessPiecesDiv = React.createElement('div', {id: 'chess-piecesnull', className: 'chess-pieces',
+            onClick: this.select}, chessPiecesUnselectDiv, chessPiecesPathDownDiv)
+        ReactDOM.render(chessPiecesDiv, document.getElementById(oldParentId))
     }
 
     render() {
         return(
-            <div id={'chess-pieces'+this.props.id} className="div-chess-pieces" onClick={this.select} >
+            <div id={'chess-pieces'+this.props.id} className="chess-pieces" onClick={this.select} >
                 <div className={this.state.selected ? 'div-chess-pieces-select' : 'div-chess-pieces-unselect'} />
                 <div className={this.state.down ? 'div-chess-pieces-path-down' : 'div-chess-pieces-path'}>
                     <div className="div-chess-pieces-path-round" />
