@@ -43,6 +43,15 @@ export default class ChessPieces extends React.Component {
                 _this.setState({
                     selected: true
                 })
+                let divChessPiecesSelected = document.getElementsByClassName(chessPiecesSelectedClassName)
+                for (let i = 0; i < divChessPiecesSelected.length; i++) {
+                    console.info(111)
+                    if (divChessPiecesSelected[i].id !== e.currentTarget.id) {
+                        let node = _this.selectNode(divChessPiecesSelected[i])
+                        node.classList.remove(chessPiecesSelectedClassName)
+                        console.info(node)
+                    }
+                }
             }
         }
     }
