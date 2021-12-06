@@ -1,6 +1,5 @@
 import React from "react";
 import * as Game from "./game";
-import ChessPieces from "./chess-pieces";
 
 export default class ChessBoard extends React.Component {
 
@@ -24,10 +23,18 @@ export default class ChessBoard extends React.Component {
         _this.drawNewChessPieces()
     }
 
+    getChessBoard() {
+        return document.getElementById('canvas-chess-board')
+    }
+
+    getContext(canvasChessBoard) {
+        return canvasChessBoard.getContext('2d')
+    }
+
     drawChessBoard() {
-        const canvasChessBoard = document.getElementById('canvas-chess-board')
+        let canvasChessBoard = this.getChessBoard()
         // 外边框
-        let context = canvasChessBoard.getContext('2d')
+        let context = this.getContext(canvasChessBoard)
         context.lineWidth = '1'
         context.strokeStyle = '#CCCCCC'
         context.strokeRect(0,0,480,530)
@@ -192,32 +199,123 @@ export default class ChessBoard extends React.Component {
     }
 
     drawNewChessPieces() {
+        let _this = this
+        let context = _this.getContext(_this.getChessBoard())
+        // 坐标归位
+        context.rotate(90 * Math.PI/180)
+        context.rotate(90 * Math.PI/180)
+        context.rotate(90 * Math.PI/180)
+        context.translate(-340, -140)
+        context.rotate(180 * Math.PI/180)
+        context.translate(-480, -530)
+        context.rotate(90 * Math.PI/180)
+        context.translate(0, -530)
         Game.initPiecesPosition()
             .then(res => {
                 this.setState({chessPiecesArray: res.data})
+                const {chessPiecesArray} = _this.state
+                const {positionArray} = _this.state
+                console.info(chessPiecesArray)
+                // eslint-disable-next-line array-callback-return
+                chessPiecesArray.map((item,index) => {
+                    let image = _this.getImageById(item)
+                    image.onload = () => {
+                        context.drawImage(image, positionArray[index].x, positionArray[index].y, 50, 50)
+                    }
+                })
             })
             .catch(error => {
                 console.info(error)
             })
     }
 
+    getImageById(id) {
+        let image = new Image()
+        let path
+        image.id = 'chess-pieces' + id
+        switch (id) {
+            case 1:
+            case 9:
+                path = require("../image/RR.GIF")
+                break
+            case 2:
+            case 8:
+                path = require("../image/RN.GIF")
+                break
+            case 3:
+            case 7:
+                path = require("../image/RB.GIF")
+                break
+            case 4:
+            case 6:
+                path = require("../image/RA.GIF")
+                break
+            case 5:
+                path = require("../image/RK.GIF")
+                break
+            case 10:
+            case 11:
+                path = require("../image/RC.GIF")
+                break
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+                path = require("../image/RP.GIF")
+                break
+            case 17:
+            case 25:
+                path = require("../image/BR.GIF")
+                break
+            case 18:
+            case 24:
+                path = require("../image/BN.GIF")
+                break
+            case 19:
+            case 23:
+                path = require("../image/BB.GIF")
+                break
+            case 20:
+            case 22:
+                path = require("../image/BA.GIF")
+                break
+            case 21:
+                path = require("../image/BK.GIF")
+                break
+            case 26:
+            case 27:
+                path = require("../image/BC.GIF")
+                break
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+            case 32:
+                path = require("../image/BP.GIF")
+                break
+            default:
+                path = ''
+        }
+        image.src = path.default
+        return image
+    }
+
     render() {
-        const {chessPiecesArray} = this.state
-        const {positionArray} = this.state
         return(
             <div id="div-chess">
                 <canvas id="canvas-chess-board" width="480" height="530">
 
                 </canvas>
-                {chessPiecesArray.map((item,index)=>{
-                    return <div id={index} className="div-chess-pieces"
-                                style={{left: positionArray[index].x + 'px', top: + positionArray[index].y +'px'}}
-                                key={index} >
+                {/*{chessPiecesArray.map((item,index)=>{*/}
+                {/*    return <div id={index} className="div-chess-pieces"*/}
+                {/*                style={{left: positionArray[index].x + 'px', top: + positionArray[index].y +'px'}}*/}
+                {/*                key={index} >*/}
 
-                                <ChessPieces id={item} />
+                {/*                <ChessPieces id={item} />*/}
 
-                           </div>
-                })}
+                {/*           </div>*/}
+                {/*})}*/}
             </div>
         )
     }
